@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class BookEntity {
 
     @Id
-    private String BookId;
+    private String bookId;
 
     private String bookName;
 

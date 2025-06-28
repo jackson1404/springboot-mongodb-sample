@@ -30,7 +30,6 @@ public class BookController {
     public ResponseEntity<String> createBook(@RequestBody BookRequestDto bookRequestDto){
 
         try {
-            System.out.println("reach");
             bookService.createBook(bookRequestDto);
 
             return ResponseEntity.status(HttpStatus.OK).body("Book Added Successfully");
@@ -39,5 +38,31 @@ public class BookController {
         }
 
     }
+
+    @PutMapping("/updateBook")
+    public ResponseEntity<String> updateBook(@RequestParam("bookId") String bookId, @RequestBody BookRequestDto bookRequestDto){
+
+        try {
+            bookService.updateBook(bookId, bookRequestDto);
+
+            return ResponseEntity.status(HttpStatus.OK).body("Book Updated Successfully");
+        } catch (ClassNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
+    }
+
+    @DeleteMapping("/deleteBook")
+    public ResponseEntity<String> deleteBook(@RequestParam("bookId") String bookId){
+
+        try {
+            bookService.deleteBook(bookId);
+            return ResponseEntity.status(HttpStatus.OK).body("Book deleted successfully");
+        } catch (ClassNotFoundException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+
+    }
+
 
 }

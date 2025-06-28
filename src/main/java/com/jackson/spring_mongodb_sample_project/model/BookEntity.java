@@ -4,7 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "books")
+@Document(collection = "books")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class BookEntity {
 
     @Id
-    private Long BookId;
+    private String BookId;
 
     private String bookName;
 

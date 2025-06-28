@@ -26,6 +26,7 @@ public class BookService {
         bookEntity.setBookDescription(bookRequestDto.getBookDescription());
         bookEntity.setIsPublished(bookRequestDto.getIsPublished());
 
+        System.out.println("Book entity" + bookEntity.getBookName());
         bookRepository.save(bookEntity);
     }
 }

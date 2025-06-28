@@ -29,9 +29,15 @@ public class BookController {
     @PostMapping("/addBooks")
     public ResponseEntity<String> createBook(@RequestBody BookRequestDto bookRequestDto){
 
-        bookService.createBook(bookRequestDto);
+        try {
+            System.out.println("reach");
+            bookService.createBook(bookRequestDto);
 
-        return ResponseEntity.status(HttpStatus.OK).body("Book Added Successfully");
+            return ResponseEntity.status(HttpStatus.OK).body("Book Added Successfully");
+        } catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred when creating the book");
+        }
+
     }
 
 }
